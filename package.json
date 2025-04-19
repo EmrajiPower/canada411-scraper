@@ -1,0 +1,17 @@
+{
+  "name": "canada411-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "puppeteer": "^24.6.1",
+    "user-agents": "^1.1.513"
+  }
+}
