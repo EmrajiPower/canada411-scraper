@@ -118,7 +118,7 @@ async function scrapePageWithRetry(page, url, maxRetries = 3) {
     resultsByLetter[letter] = results;
 
     // Save results to CSV
-    const csvPath = path.resolve(__dirname, `./${letter}_Vancouver_BC_entries_${results.length}.csv`);
+    const csvPath = path.resolve(__dirname, `./output/${letter}_Vancouver_BC_entries_${results.length}.csv`);
     const csvWriter = createCsvWriter({
       path: csvPath,
       header: [
