@@ -85,7 +85,7 @@ async function scrapePageWithRetry(page, url, maxRetries = 3) {
     const results = [];
 
     while (true) {
-      const url = `https://www.canada411.ca/search/si-alph/${pageNum}/${letter}/Vancouver+BC/`;
+      const url = `https://www.canada411.ca/search/si-alph/${pageNum}/${letter}/Bonfield+ON/`;
       console.log(`Scraping ${url}`);
 
       const data = await scrapePageWithRetry(page, url);
@@ -95,7 +95,7 @@ async function scrapePageWithRetry(page, url, maxRetries = 3) {
       }
 
       try {
-        await page.waitForSelector('.ypalert.ypalert--warning', { timeout: 5000 });
+        await page.waitForSelector('.ypalert.ypalert--warning', { timeout: 2500 });
 
         const warningText = await page.$eval('.ypalert.ypalert--warning', el => el.innerText.trim());
         console.log('⚠️ Warning found:', warningText);
@@ -112,13 +112,13 @@ async function scrapePageWithRetry(page, url, maxRetries = 3) {
       console.log(`✅ ${data.length} entries added for letter ${letter} page ${pageNum}`);
 
       pageNum += 1;
-      await sleep(1000 + Math.random() * 5);
+      await sleep(500 + Math.random() * 5);
     }
 
     resultsByLetter[letter] = results;
 
     // Save results to CSV
-    const csvPath = path.resolve(__dirname, `./${letter}_Vancouver_BC_entries_${results.length}.csv`);
+    const csvPath = path.resolve(__dirname, `./output/${letter}_Bonfield+ON_entries_${results.length}.csv`);
     const csvWriter = createCsvWriter({
       path: csvPath,
       header: [
